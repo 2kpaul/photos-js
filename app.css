@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto" sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    justify-content: center;
+    align-items: center;
+}
+
+header h2 {
+    padding: 2rem;
+}
+
+#logo {
+    text-decoration: none;
+    color: black;
+}
+
+.search-form {
+    padding: 2rem;
+    display: flex;
+}
+
+.search-form input {
+    font-size: 2rem;
+    padding: 0.5rem;
+    width: 100;
+    border: none;
+    border: 1px solid rgb(34, 190, 201);
+}
+
+.search-form button {
+    border: none;
+    padding: 0.5rem;
+    color: white;
+    background: rgb(34, 190, 201);
+    cursor: pointer;
+}
+
+.gallery-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: gray;
+}
+
+.gallery-info a {
+    color: gray;
+}
