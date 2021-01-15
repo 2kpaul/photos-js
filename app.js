@@ -2,15 +2,22 @@ const apiKey = '563492ad6f91700001000001c5b0e18f0bb94decbaa22fed1fc05259';
 const gallery = document.querySelector('.gallery');
 const searchInput = document.querySelector('.search-input');
 const form = document.querySelector('.search-form');
+const more = document.querySelector('.more');
 let searchvalue;
+let page = 1;
+let fetchLink;
+let currentSearch;
 
 //events
 
 searchInput.addEventListener('input', updateInput);
 form.addEventListener('submit', (event) => {
     event.preventDefault();
+    currentSearch = searchvalue;
     searchPhotos(searchvalue);
 })
+
+more.addEventListener('click', loadMore);
 
 function updateInput(event) {
     searchvalue = event.target.value;
@@ -47,14 +54,16 @@ function generatePictures(data) {
 
 async function curatedPhotos() {
 
-    const data = await fetchApi('https://api.pexels.com/v1/curated?per_page=15&page=1');
+    fetchLink = `https://api.pexels.com/v1/curated?per_page=15&page=${page}`;
+    const data = await fetchApi(fetchLink);
 
     generatePictures(data);
 }
 
 async function searchPhotos(query) {
     clear();
-    const data = await fetchApi(`https://api.pexels.com/v1/search?query=${query}&per_page=15&page=1`);
+    fetchLink = `https://api.pexels.com/v1/search?query=${query}&per_page=15&page=${page}`;
+    const data = await fetchApi(fetchLink);
 
     generatePictures(data);
 }
@@ -62,6 +71,17 @@ async function searchPhotos(query) {
 function clear() {
     gallery.innerHTML = '';
     searchInput.value = '';
+}
+
+async function loadMore() {
+    page++;
+    if (currentSearch) {
+        fetchLink = `https://api.pexels.com/v1/search?query=${currentSearch}&per_page=15&page=${page}`;
+    } else {
+        fetchLink = `https://api.pexels.com/v1/curated?per_page=15&page=${page}`;
+    }
+    const data = await fetchApi(fetchLink);
+    generatePictures(data);
 }
 
 curatedPhotos();
