@@ -55,4 +55,37 @@ header h2 {
 
 .gallery-info a {
     color: gray;
+    padding: 1rem 0rem;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    padding: 2rem 0rem;
+    width: 80%;
+    margin: auto;
+    row-gap: 5rem;
+    column-gap: 3rem;
+}
+
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-button {
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.more {
+    padding: 1rem 3rem;
+    background: rgb(34, 190, 201);
+    color: white;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
 }
