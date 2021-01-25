@@ -42,11 +42,7 @@ function generatePictures(data) {
         const galleryImg = document.createElement('div');
         galleryImg.classList.add('gallery-img');
         galleryImg.innerHTML = `
-        <div class="gallery-info">
-        <p>${photo.photographer}</p>
-        <a href="${photo.src.original}" target="_blank">Donwload</a>
-        </div>
-        <img src="${photo.src.large}" /> 
+        <a href="${photo.src.original}" target="_blank"><img src="${photo.src.large}" /></a>
         `;
         gallery.appendChild(galleryImg);
     });
